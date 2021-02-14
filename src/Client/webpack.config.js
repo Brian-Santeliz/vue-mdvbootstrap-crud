@@ -25,11 +25,6 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
-        // resolve: {
-        //   alias: {
-        //     vue: "vue/dist/vue.js",
-        //   },
-        // },
       },
       {
         test: /\.css$/i,
@@ -44,6 +39,9 @@ module.exports = {
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/Client/public/index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "css/estilos.css",
     }),
   ],
 };
