@@ -4,11 +4,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/client/",
+  entry: "./src/Client/main.js",
   output: {
-    path: path.join(__dirname, "/src/server/public"),
+    path: path.join(__dirname, "../Server/public"),
     filename: "js/index.js",
   },
+
   module: {
     rules: [
       {
@@ -24,6 +25,11 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
+        // resolve: {
+        //   alias: {
+        //     vue: "vue/dist/vue.js",
+        //   },
+        // },
       },
       {
         test: /\.css$/i,
@@ -37,7 +43,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/client/public/index.html",
+      template: "./src/Client/public/index.html",
     }),
   ],
 };
