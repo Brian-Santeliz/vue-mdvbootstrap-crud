@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-md-12">
-      <h3 class="text-center mb-3">Agregar Registro</h3>
+    <div class="col-md-9">
+      <h3 class="text-center mb-3">Añadir Articulos</h3>
       <div class="card card-body">
-        <form>
+        <form @submit.prevent="handleSubmit">
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input
@@ -36,7 +36,7 @@
             />
           </div>
 
-          <div class="form-group">
+          <div class="form-group mb-4">
             <button class="btn btn-success btn-block">ENVIAR</button>
           </div>
         </form>
@@ -56,6 +56,11 @@ export default {
         price: "",
       },
     };
+  },
+  methods: {
+    handleSubmit() {
+      this.$router.push("/");
+    },
   },
 };
 </script>

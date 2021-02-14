@@ -20,15 +20,14 @@
       </div>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container my-5">
       <router-view></router-view>
     </div>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <nav
-      class="navbar navbar-dark bg-primary d-flex justify-content-center text-white"
+    <footer
+      class="fixed-bottom navbar navbar-dark bg-primary d-flex justify-content-center text-white"
     >
       <p class="">Frontend UVM | Roque Barrios &copy; {{ year }}</p>
-    </nav>
+    </footer>
   </div>
 </template>
 
