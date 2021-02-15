@@ -26,7 +26,7 @@
           </div>
 
           <div class="form-group">
-            <label for="precio">Precio:</label>
+            <label for="precio">Preció:</label>
             <input
               v-model="article.price"
               type="number"
@@ -42,6 +42,7 @@
               :disabled="disabledButton"
             >
               Enviar
+              <i class="bi bi-cursor-fill"></i>
             </button>
           </div>
         </form>
@@ -53,7 +54,7 @@
 
 <script>
 import Swal from "sweetalert2";
-const endPoint = "http://localhost:4040/api/articles";
+const endPoint = "/api/articles";
 export default {
   name: "Add",
   data() {

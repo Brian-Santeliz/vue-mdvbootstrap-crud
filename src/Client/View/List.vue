@@ -69,7 +69,9 @@
 
 <script>
 import Swal from "sweetalert2";
-const endPoint = "http://localhost:4040/api/articles";
+ const endPoint = "/api/articles";
+
+
 export default {
   name: "List",
   data() {
