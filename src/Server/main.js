@@ -2,12 +2,14 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const database = require("./Database/connection");
+const router = require("./Router/router");
 const server = express();
 
 server.set("puerto", 4040);
+server.use(morgan("dev"));
 server.use(express.static(path.join(__dirname, "/public")));
 server.use(express.json());
-server.use(morgan("dev"));
+server.use("/api", router);
 
 server.listen(server.get("puerto"), async function() {
   console.log("Servidor corriendo en el puerto:", server.get("puerto"));
