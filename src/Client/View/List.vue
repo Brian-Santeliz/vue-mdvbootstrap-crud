@@ -1,10 +1,10 @@
 <template>
   <section>
-    <template v-show="loading">
-      <div class="spinner-border" role="status">
+    <section v-if="loading" class="d-flex justify-content-center text-center">
+      <div class="spinner-border text-success" role="status">
         <span class="sr-only">Loading...</span>
-      </div></template
-    >
+      </div>
+    </section>
     <template v-if="!articles.length">
       <h3 class="text-center p-2 mt-3 text-capitalize">
         El Inventario esta vació, empieza agregar
@@ -47,7 +47,7 @@
               </router-link>
               <button
                 class="btn btn-danger mb-1"
-                @click="handleDeleteArticle(index)"
+                @click="handleDeleteArticle(id)"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,8 @@
 </template>
 
 <script>
-const endPoint = "/api/articles";
+import Swal from "sweetalert2";
+const endPoint = "http://localhost:4040/api/articles";
 export default {
   name: "List",
   data() {
@@ -85,7 +86,30 @@ export default {
   },
   methods: {
     handleDeleteArticle(idx) {
-      this.articles.splice(idx, 1);
+      Swal.fire({
+        title: "Eliminar",
+        text: "¿Estas seguro en eliminar este artículo?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Si, eliminar!",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Eliminado!", "Articulo eliminado del stock", "success");
+          try {
+            await fetch(`${endPoint}/${idx}`, {
+              method: "DELETE",
+            });
+            this.articles = this.articles.filter(
+              (article) => article.id !== idx
+            );
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      });
     },
     async fetchData() {
       try {

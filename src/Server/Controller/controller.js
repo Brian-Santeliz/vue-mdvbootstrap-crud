@@ -22,7 +22,6 @@ const getById = async (req, res) => {
 
 const post = async (req, res) => {
   const { name, description, price } = req.body;
-  console.log(req.body);
   try {
     await database.awaitQuery(
       "INSERT INTO article (name, description, price) VALUES (?, ? , ?)",

@@ -50,7 +50,10 @@
   </div>
 </template>
 
+
 <script>
+import Swal from "sweetalert2";
+const endPoint = "http://localhost:4040/api/articles";
 export default {
   name: "Add",
   data() {
@@ -63,7 +66,16 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
+      const response = await fetch(endPoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.article),
+      });
+      const data = await response.json();
+      console.log(data);
       this.$router.push({ name: "view" });
     },
   },
