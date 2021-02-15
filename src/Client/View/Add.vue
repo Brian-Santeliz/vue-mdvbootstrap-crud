@@ -38,10 +38,10 @@
 
           <div class="form-group mb-4">
             <button
-              class="btn btn-success btn-block"
+              class="btn btn-success btn-block text-uppercase"
               :disabled="disabledButton"
             >
-              ENVIAR
+              Enviar
             </button>
           </div>
         </form>
