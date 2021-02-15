@@ -34,10 +34,10 @@
 <script>
 export default {
   name: "App",
-  data() {
-    return {
-      year: new Date().getFullYear(),
-    };
+  computed: {
+    year() {
+      return new Date().getFullYear();
+    },
   },
 };
 </script>

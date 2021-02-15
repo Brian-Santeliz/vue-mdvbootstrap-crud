@@ -66,61 +66,12 @@
 </template>
 
 <script>
-const endPoint = "/articles";
+const endPoint = "/api/articles";
 export default {
   name: "List",
   data() {
     return {
-      articles: [
-        {
-          id: "1",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "2",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "3",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "4",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "5",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "6",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "7",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "1211",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-      ],
+      articles: [],
     };
   },
   created() {
