@@ -7,7 +7,7 @@
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input
-              v-model="article.name"
+              v-model.trim="article.name"
               type="text"
               id="nombre"
               class="form-control text-dark"
@@ -17,7 +17,7 @@
           <div class="form-group">
             <label for="descripcion">Descripción:</label>
             <textarea
-              v-model="article.descripcion"
+              v-model.trim="article.description"
               id="descripcion"
               name="descripcion"
               class="form-control"
@@ -28,7 +28,7 @@
           <div class="form-group">
             <label for="precio">Precio:</label>
             <input
-              v-model="article.price"
+              v-model.number="article.price"
               type="number"
               id="precio"
               class="form-control"
@@ -37,7 +37,12 @@
           </div>
 
           <div class="form-group mb-4">
-            <button class="btn btn-success btn-block">ENVIAR</button>
+            <button
+              class="btn btn-success btn-block"
+              :disabled="disabledButton"
+            >
+              ENVIAR
+            </button>
           </div>
         </form>
       </div>
@@ -53,13 +58,21 @@ export default {
       article: {
         name: "",
         description: "",
-        price: "",
+        price: null,
       },
     };
   },
   methods: {
     handleSubmit() {
       this.$router.push({ name: "view" });
+    },
+  },
+  computed: {
+    disabledButton() {
+      return this.article.name.trim() === "" ||
+        this.article.description.trim() === ""
+        ? true
+        : false;
     },
   },
 };
