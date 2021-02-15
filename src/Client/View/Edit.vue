@@ -69,9 +69,13 @@ export default {
   },
   methods: {
     async fetchDataById() {
-      const response = await fetch(`${endPoint}/${this.id}`);
-      const data = await response.json();
-      this.article = data[0];
+      try {
+        const response = await fetch(`${endPoint}/${this.id}`);
+        const data = await response.json();
+        this.article = data[0];
+      } catch (error) {
+        console.error(error);
+      }
     },
     async submitForm() {
       try {
@@ -102,6 +106,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
