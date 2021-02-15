@@ -4,7 +4,7 @@
   "description": "Crud usando Vue Router",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon src/main.js",
+    "server": "nodemon src/Server/main.js",
     "client": "webpack --mode production --config src/Client/webpack.config.js",
     "dev:client": "webpack serve --mode development --open  --config src/Client/webpack.config.js"
   },
@@ -23,6 +23,7 @@
     "html-webpack-plugin": "^5.0.0",
     "mini-css-extract-plugin": "^1.3.6",
     "morgan": "^1.10.0",
+    "mysql-await": "^2.1.6",
     "nodemon": "^2.0.7",
     "vue": "^2.6.12",
     "vue-loader": "^15.9.6",
