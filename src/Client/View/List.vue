@@ -1,5 +1,10 @@
 <template>
   <section>
+    <template v-show="loading">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div></template
+    >
     <template v-if="!articles.length">
       <h3 class="text-center p-2 mt-3 text-capitalize">
         El Inventario esta vació, empieza agregar
@@ -72,20 +77,27 @@ export default {
   data() {
     return {
       articles: [],
+      loading: false,
     };
   },
   created() {
-    fetch(endPoint)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.fetchData();
   },
   methods: {
     handleDeleteArticle(idx) {
       this.articles.splice(idx, 1);
+    },
+    async fetchData() {
+      try {
+        this.loading = true;
+        const response = await fetch(endPoint);
+        const data = await response.json();
+        this.articles = data;
+        this.loading = false;
+      } catch (error) {
+        console.error(error);
+        this.loading = false;
+      }
     },
   },
 };
