@@ -28,7 +28,7 @@
           <div class="form-group">
             <label for="precio">Precio:</label>
             <input
-              v-model.number="article.price"
+              v-model="article.price"
               type="number"
               id="precio"
               class="form-control"
@@ -67,16 +67,20 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const response = await fetch(endPoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.article),
-      });
-      const data = await response.json();
-      console.log(data);
-      this.$router.push({ name: "view" });
+      try {
+        const response = await fetch(endPoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(this.article),
+        });
+        await response.json();
+        this.$router.push({ name: "view" });
+        Swal.fire("Agregado!", "Articulo añadidó al stock", "success");
+      } catch (error) {
+        console.error(errror);
+      }
     },
   },
   computed: {

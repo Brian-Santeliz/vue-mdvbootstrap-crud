@@ -5,7 +5,7 @@
         Editar Articulo con ID: {{ $route.params.id }}
       </h3>
       <div class="card card-body">
-        <form>
+        <form @submit.prevent="submitForm">
           <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input
@@ -13,6 +13,7 @@
               id="nombre"
               class="form-control text-dark"
               required
+              v-model.trim="article.name"
             />
           </div>
           <div class="form-group">
@@ -22,16 +23,28 @@
               name="descripcion"
               class="form-control"
               rows="4"
+              v-model.trim="article.description"
             ></textarea>
           </div>
 
           <div class="form-group">
             <label for="precio">Precio:</label>
-            <input type="number" id="precio" class="form-control" required />
+            <input
+              type="number"
+              v-model="article.price"
+              id="precio"
+              class="form-control"
+              required
+            />
           </div>
 
           <div class="form-group mb-4">
-            <button class="btn btn-success btn-block">ENVIAR</button>
+            <button
+              class="btn btn-success btn-block"
+              :disabled="disabledButton"
+            >
+              ENVIAR
+            </button>
           </div>
         </form>
       </div>
@@ -40,8 +53,53 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
+const endPoint = "http://localhost:4040/api/articles";
 export default {
   name: "Edit",
+  data() {
+    return {
+      id: this.$route.params.id,
+      article: {
+        name: "",
+        description: "",
+        price: null,
+      },
+    };
+  },
+  methods: {
+    async fetchDataById() {
+      const response = await fetch(`${endPoint}/${this.id}`);
+      const data = await response.json();
+      this.article = data[0];
+    },
+    async submitForm() {
+      try {
+        await fetch(`${endPoint}/${this.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(this.article),
+        });
+        this.$router.push({ name: "view" });
+        Swal.fire("Actualizado!", "Articulo actualizado al stock", "success");
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  created() {
+    this.fetchDataById();
+  },
+  computed: {
+    disabledButton() {
+      return this.article.name.trim() === "" ||
+        this.article.description.trim() === ""
+        ? true
+        : false;
+    },
+  },
 };
 </script>
 

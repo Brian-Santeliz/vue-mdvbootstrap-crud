@@ -22,10 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="({ name, description, price, id }, index) in articles"
-            :key="id"
-          >
+          <tr v-for="{ name, description, price, id } in articles" :key="id">
             <th scope="row">{{ id }}</th>
             <td>{{ name }}</td>
             <td>{{ description }}</td>
