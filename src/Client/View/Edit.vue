@@ -2,7 +2,7 @@
   <div class="row justify-content-center mb-5">
     <div class="col-md-9">
       <h3 class="text-center mb-3">
-        Edit Articulo con ID: {{ $route.params.id }}
+        Editar Articulo con ID: {{ $route.params.id }}
       </h3>
       <div class="card card-body">
         <form>

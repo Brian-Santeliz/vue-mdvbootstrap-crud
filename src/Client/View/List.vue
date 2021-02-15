@@ -1,5 +1,5 @@
 <template>
-  <table class="table table-hover mb-5">
+  <table class="table table-hover">
     <thead>
       <tr class="table-primary">
         <th scope="col">ID</th>
@@ -10,18 +10,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(article, index) in articles" :key="article.id">
-        <th scope="row">{{ article.id }}</th>
-        <td>{{ article.name }}</td>
-        <td>{{ article.description }}</td>
-        <td>{{ article.price }}</td>
+      <tr
+        v-for="({ name, description, price, id }, index) in articles"
+        :key="id"
+      >
+        <th scope="row">{{ id }}</th>
+        <td>{{ name }}</td>
+        <td>{{ description }}</td>
+        <td>{{ price }}</td>
         <td>
-          <router-link
-            :to="{ name: 'edit', params: { id: article.id } }"
-            class="btn btn-info"
-            >Edit</router-link
+          <router-link :to="`/edit/${id}`" class="btn btn-info"
+            >Editar</router-link
           >
-          <button class="btn btn-danger" @click="handleDeleteArticle(index)">
+          <button
+            class="btn btn-danger mt-1"
+            @click="handleDeleteArticle(index)"
+          >
             Eliminar
           </button>
         </td>
@@ -38,127 +42,49 @@ export default {
     return {
       articles: [
         {
-          id: "12121",
+          id: "1",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
+          id: "2",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
+          id: "3",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
+          id: "4",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
+          id: "5",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
+          id: "6",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
+          id: "7",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,
         },
         {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
-          name: "Example",
-          description: "This is a example how description, example lorem2323",
-          price: 232323323,
-        },
-        {
-          id: "12121",
+          id: "1211",
           name: "Example",
           description: "This is a example how description, example lorem2323",
           price: 232323323,

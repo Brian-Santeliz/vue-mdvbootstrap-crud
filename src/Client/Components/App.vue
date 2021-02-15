@@ -21,7 +21,7 @@
     </nav>
 
     <div class="container my-5">
-      <router-view></router-view>
+      <router-view />
     </div>
     <footer
       class="fixed-bottom navbar navbar-dark bg-primary d-flex justify-content-center text-white"
